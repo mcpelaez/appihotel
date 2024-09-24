@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Reservas</title>
+    <!-- Enlace a Bootstrap CSS para estilos (opcional) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Enlace a jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Agregar Reserva</h2>
+    <form id="add-item-form">
+      <div class="form-group">
+          <label for="idejecucion">Idejecucion</label>
+          <input type="text" class="form-control" id="idejecucion" required>
+      </div>
+      <div class="form-group">
+          <label for="cliente">Cliente</label>
+          <input type="text" class="form-control" id="cliente" required>
+      </div>
+      <div class="form-group">
+          <label for="idReserva">idReserva</label>
+          <input type="text" class="form-control" id="idReserva" required>
+      </div>
+      <div class="form-group">
+          <label for="finicio">Finicio</label>
+          <input type="date" class="form-control" id="finicio" required>
+      </div>
+      <div class="form-group">
+          <label for="ffin">FFin</label>
+          <input type="date" class="form-control" id="ffin" required>
+      </div>
+      <div class="form-group">
+          <label for="fechaini">Fechaini</label>
+          <input type="date" class="form-control" id="fechaini" required>
+      </div>
+      <div class="form-group">
+          <label for="fechafin">FechaFin</label>
+          <input type="date" class="form-control" id="fechafin" required>
+      </div>
+      <div class="form-group">
+          <label for="estado">Estado</label>
+          <select class="form-control" id="estado" required>
+              <option value="">Seleccione</option>
+              <option value="activo">Activo</option>
+              <option value="inactivo">Inactivo</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Agregar Reserva</button>
+  </form>
+  
+
+    <h2 class="mt-5">Lista de Reservas</h2>
+    <table id="reservasTable" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Idejecucion</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">idReserva</th>
+                <th scope="col">Finicio</th>
+                <th scope="col">FFin</th>
+                <th scope="col">Fechaini</th>
+                <th scope="col">FechaFin</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se agregarán las filas dinámicamente -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#add-item-form').submit(function (e) {
+        e.preventDefault();
+
+        const reservaData = {
+            ideejecucion: $('#idejecucion').val(), // Coincide con el esquema
+            Cliente: $('#cliente').val(), // Debe ser 'Cliente' con C mayúscula
+            idReserva: $('#idReserva').val(), // Coincide con el esquema
+            Finicio: $('#finicio').val(), // Debe ser 'Finicio' con F mayúscula
+            FFin: $('#ffin').val(), // Debe ser 'FFin' con F mayúscula
+            Fechaini: $('#fechaini').val(), // Debe ser 'Fechaini' con F mayúscula
+            Fechafin: $('#fechafin').val(), // Debe ser 'Fechafin' con F mayúscula
+            Estado: $('#estado').val() // Debe ser 'Estado' con E mayúscula
+        };
+
+console.log('Datos de Reserva:', reservaData);
+
+        $.ajax({
+            url: 'http://localhost:3001/api/hospedajes', // Cambia la URL a tu API de reservas
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(reservaData),
+            success: function (response) {
+                alert('Reserva agregada exitosamente');
+
+                // Agregar la nueva fila a la tabla
+                const newRow = `<tr data-id="${response._id}">
+    <td>${response.ideejecucion}</td>
+    <td>${response.Cliente}</td> // 
+    <td>${response.idReserva}</td>
+    <td>${response.Finicio}</td>
+    <td>${response.FFin}</td>
+    <td>${response.Fechaini}</td>
+    <td>${response.Fechafin}</td>
+    <td>${response.Estado}</td> 
+    <td>
+        <button class="btn btn-sm btn-outline-primary">
+            <i class="ti ti-pencil"></i>
+        </button>
+        <button class="btn btn-sm btn-outline-danger delete-button" data-id="${response._id}">
+            <i class="ti ti-x"></i>
+        </button>
+    </td>
+</tr>`;
+
+
+                $('#reservasTable tbody').append(newRow);
+                
+                // Limpiar el formulario después de agregar la reserva
+                $('#add-item-form')[0].reset();
+            },
+            error: function (error) {
+    // Aquí puedes mostrar más información sobre el error
+    alert('Error al agregar la reserva: ' + (error.responseJSON ? error.responseJSON.message : 'Error desconocido'));
+}
+        });
+    });
+});
+</script>
+
+</body>
+</html>

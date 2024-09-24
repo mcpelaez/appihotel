@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nido Sky</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../assets/images/logos/nidosky.png"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Fondo general y texto */
+      body {
+        background-color: #e0e0e0; /* Fondo oscuro */
+        color: white; /* Texto claro */
+        font-family: Arial, sans-serif;
+      }
+
+      /* Estilos del contenedor del formulario */
+      .card {
+        background-color: #2c2c2c; /* Fondo oscuro para el formulario */
+        color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Estilos del título */
+      .card-body h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #00a859; /* Color dorado */
+      }
+
+      /* Estilos de los inputs y selects */
+      .form-control {
+        background-color: #333;
+        color: white;
+        border: 1px solid #444;
+        border-radius: 5px;
+      }
+
+      /* Estilos del botón de inicio de sesión */
+      .btn-primary {
+        background-color: #00a859; /* Color dorado */
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: relative; /* Añadido para posicionar el ícono */
+      }
+
+      .btn-primary:hover {
+        background-color: #008746; /* Color dorado oscuro al hacer hover */
+      }
+
+      /* Estilo del ícono del ojo */
+      .eye-icon {
+        position: absolute;
+        right: 10px;
+        top: 60%; /* Ajustado para colocar el ícono más abajo */
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      /* Estilo del campo de contraseña */
+      .password-container {
+        position: relative;
+      }
+
+      .form-control-password {
+        padding-right: 40px; /* Añadido espacio para el ícono */
+      }
+
+      /* Estilo del enlace de recuperación de contraseña y enlace de registro */
+      .text-primary {
+        color: #fff; /* Color blanco para los enlaces */
+      }
+
+      .text-primary:hover {
+        text-decoration: underline;
+        color: #00a859; /* Color dorado al hacer hover */
+      }
+
+      /* Estilo de los textos */
+      .fs-4 {
+        font-size: 1.25rem;
+      }
+
+      .fw-bold {
+        font-weight: 700;
+      }
+
+      /* Estilo para los labels */
+      .form-label {
+        color: white; /* Texto blanco para los labels */
+      }
+
+      /* Estilo para el texto del checkbox */
+      .form-check-label {
+        color: white; /* Texto blanco para los labels de checkbox */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--  Body Wrapper -->
+    <div
+      class="page-wrapper"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+    >
+      <div
+        class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center"
+      >
+        <div class="d-flex align-items-center justify-content-center w-100">
+          <div class="row justify-content-center w-100">
+            <div class="col-md-8 col-lg-6 col-xxl-3">
+              <div class="card mb-0">
+                <div class="card-body">
+                  <a
+                    href="./index.html"
+                    class="text-nowrap logo-img text-center d-block py-3 w-100"
+                  >
+                    <img
+                      src="../assets/images/logos/nidosky.png"
+                      width="180"
+                      alt=""
+                    />
+                  </a>
+                  <p class="text-center fs-4 fw-bold">Dulce Refugio</p>
+                  <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >Username</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                      />
+                    </div>
+                    <div class="mb-4 password-container">
+                      <label for="exampleInputPassword1" class="form-label"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control form-control-password"
+                        id="exampleInputPassword1"
+                      />
+                      <span class="eye-icon" onclick="togglePassword()">
+                        <i class="bi bi-eye"></i>
+                      </span>
+                    </div>
+                    <div
+                      class="d-flex align-items-center justify-content-between mb-4"
+                    >
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value=""
+                          id="flexCheckChecked"
+                          checked
+                        />
+                        <label
+                          class="form-check-label text-light"
+                          for="flexCheckChecked"
+                        >
+                          Remember this Device
+                        </label>
+                      </div>
+                      <a class="text-primary fw-bold" href="./Contrasena.html"
+                        >Forgot Password?</a
+                      >
+                    </div>
+                    <a
+                      href="./Apartamentos.html"
+                      class="btn btn-primary w-100 py-3 fs-4 mb-4 rounded-2"
+                      >Sign In</a
+                    >
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                    >
+                      <a
+                        class="text-primary fw-bold ms-2"
+                        href="./Registro.html"
+                        >Create an account</a
+                      >
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function togglePassword() {
+        var passwordField = document.getElementById("exampleInputPassword1");
+        var eyeIcon = document.querySelector(".eye-icon i");
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          eyeIcon.classList.remove("bi-eye");
+          eyeIcon.classList.add("bi-eye-slash");
+        } else {
+          passwordField.type = "password";
+          eyeIcon.classList.remove("bi-eye-slash");
+          eyeIcon.classList.add("bi-eye");
+        }
+      }
+    </script>
+  </body>
+</html>

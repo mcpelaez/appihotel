@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nido Sky</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../assets/images/logos/nidosky.png"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
+    />
+    <style>
+      /* Fondo general y texto */
+      body {
+        background-color: #e0e0e0; /* Fondo oscuro para toda la página */
+        color: #e0e0e0; /* Texto claro */
+      }
+
+      /* Fondo oscuro para el menú de navegación */
+      .left-sidebar {
+        background-color: #ffffff; /* Color de fondo del menú de navegación */
+      }
+
+      /* Fondo oscuro para el logo */
+      .brand-logo {
+        background-color: #333; /* Color de fondo del logo */
+        padding: 20px;
+      }
+
+      /* Estilo para el texto del menú de navegación */
+      .sidebar-nav .sidebar-item a {
+        color: #e0e0e0; /* Color de texto claro */
+      }
+
+      /* Hover en los elementos del menú */
+      .sidebar-nav .sidebar-item a:hover {
+        color: #00a859; /* Color dorado al hacer hover */
+      }
+
+      /* Estilo para los títulos de las secciones */
+      h5.card-title {
+        color: #00a859; /* Color dorado para los títulos de las tarjetas */
+      }
+
+      /* Estilo para los botones */
+      .btn-primary {
+        background-color: #00a859; /* Color dorado para el botón primario */
+        border: none;
+        color: #feecec; /* Color del texto en el botón */
+      }
+
+      .btn-excel {
+        background-color: #00a859; /* Azul para el botón de Excel */
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+
+      .btn-excel i {
+        margin-right: 5px;
+      }
+
+      .dataTables_wrapper .dataTables_paginate {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .dataTables_wrapper .dataTables_info {
+        display: none;
+      }
+
+      .dataTables_wrapper .dataTables_length {
+        display: none;
+      }
+
+      /* Contenedor de estado */
+      .status-container {
+        display: flex;
+        gap: 5px;
+      }
+
+      /* Botones de estado */
+      .btn-status {
+        border: none;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Estado Activo */
+      .btn-activo {
+        background-color: #27ae60; /* Verde para activo */
+      }
+
+      /* Estado Inactivo */
+      .btn-inactivo {
+        background-color: #e74c3c; /* Rojo para inactivo */
+      }
+
+      /* Efectos de hover */
+      .btn-status:hover {
+        opacity: 0.8;
+      }
+
+      /* Estado Activo - Hover */
+      .btn-activo:hover {
+        background-color: #1e8449; /* Verde oscuro */
+      }
+
+      /* Estado Inactivo - Hover */
+      .btn-inactivo:hover {
+        background-color: #c0392b; /* Rojo oscuro */
+      }
+
+      /* Fondo de la tabla */
+      .table {
+        background-color: #2c2c2c; /* Fondo oscuro para la tabla */
+        color: #e0e0e0; /* Texto claro en la tabla */
+      }
+
+      /* Fondo de las celdas de la tabla */
+      .table th, .table td {
+        border-color: #444; /* Color de borde oscuro */
+      }
+      .apartments-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .apartments-container h2 {
+        margin-bottom: 20px;
+      }
+
+      .apartment-card {
+        display: inline-block;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        width: 250px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .apartment-card h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .apartment-card p {
+        margin: 5px 0;
+        font-size: 1em;
+        color: #666;
+      }
+
+      .icons {
+        margin-top: 15px;
+      }
+
+      .icons a {
+        margin-right: 10px;
+      }
+
+      .icons img {
+        width: 24px;
+        height: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Body Wrapper -->
+    <div
+      class="page-wrapper"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+    >
+      
+
+     
+        <div class="container-fluid">
+          <!-- Reservas Table -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Tipo de Apartamentos</h5>
+              <div
+                class="d-flex justify-content-between align-items-center mb-4"
+              >
+                <!-- <button class="btn btn-primary">
+                 <i class="ti ti-plus"></i>
+                </button>
+                <div class="input-group" style="max-width: 300px">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Buscar"
+                    aria-label="search"
+                  />
+                </div>
+                <button class="btn btn-excel">
+                  <i class="ti ti-file-export"></i> Exportar a Excel
+                </button> -->
+              </div> 
+              <div class="apartments-container">
+                <h2>Información de los apartamentos</h2>
+                <div class="apartment-card">
+                  <h3>Type 1</h3>
+                  <p>Num. máximo de personas: 4</p>
+                  <p>Num. máximo de adultos: 2</p>
+                  <p>Num. máximo de niños: 2</p>
+                  <div class="icons">
+                    <a href="editar_apartamento1.html" class="btn btn-sm btn-outline-primary">
+                      <i class="ti ti-pencil"></i>
+                    </a>
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="ti ti-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="apartment-card">
+                  <h3>Type 2</h3>
+                  <p>Num. máximo de personas: 2</p>
+                  <p>Num. máximo de adultos: 2</p>
+                  <p>Num. máximo de niños: 1</p>
+                  <div class="icons">
+                    <a href="editar_apartamento2.html" class="btn btn-sm btn-outline-primary">
+                      <i class="ti ti-pencil"></i>
+                    </a>
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="ti ti-eye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="apartment-card">
+                  <h3>Penthouse</h3>
+                  <p>Num. máximo de personas: 6</p>
+                  <p>Num. máximo de adultos: 4</p>
+                  <p>Num. máximo de niños: 3</p>
+                  <div class="icons">
+                    <a href="editar_penthouse.html" class="btn btn-sm btn-outline-primary">
+                      <i class="ti ti-pencil"></i>
+                    </a>
+                    <button class="btn btn-sm btn-outline-secondary">
+                      <i class="ti ti-eye"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+        <!-- End Main wrapper -->
+      </div>
+      <!-- End Body Wrapper -->
+
+      <!-- Scripts -->
+      <script src="../assets/js/scripts.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          $("#reservasTable").DataTable({
+            paging: true,
+            searching: false, // Desactiva el campo de búsqueda interno
+            ordering: true,
+            lengthChange: false, // Oculta el control de "Show entries"
+          });
+        });
+      </script>
+    </body>
+  </html>

@@ -1,0 +1,116 @@
+/* Estilos para la tabla de reservas */
+.table thead th {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+}
+
+.table tbody td {
+  text-align: center;
+}
+
+.table td .btn-status {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.table td .btn-status-aprobada {
+  background-color: #28a745;
+}
+
+.table td .btn-status-pendiente {
+  background-color: #ffc107;
+}
+
+.table td .btn-status-cancelada {
+  background-color: #dc3545;
+}
+
+.table td .btn-action {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: #000000;
+}
+
+.table td .btn-action:hover {
+  color: #007bff;
+}
+
+/* Estilos para el botón de exportar a Excel */
+.btn-excel {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-excel i {
+  margin-right: 5px;
+}
+
+.btn-excel:hover {
+  background-color: #218838;
+}
+
+/* Estilos para el input de búsqueda */
+.input-group .form-control {
+  border-radius: 20px;
+  border: 1px solid #ced4da;
+}
+
+.input-group .form-control:focus {
+  border-color: #007bff;
+  box-shadow: none;
+}
+
+/* Estilos para los botones de la tabla */
+.btn-status {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+}
+
+.btn-status-aprobada {
+  background-color: green;
+}
+
+.btn-status-pendiente {
+  background-color: orange;
+}
+
+.btn-status-cancelada {
+  background-color: red;
+}
+
+.action-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-edit,
+.btn-delete {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.btn-edit:hover {
+  color: #007bff;
+}
+
+.btn-delete:hover {
+  color: #dc3545;
+}
