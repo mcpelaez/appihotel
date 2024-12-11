@@ -475,9 +475,36 @@
     `;
   }
 }
-                
+
+//                 {
+//   data: null,
+//   render: function(data, type, row) {
+//     // Define las URLs según el tipo de apartamento
+//     let url = '';
+//     switch(row.tipoApto) {
+//       case 'Penthouse':
+//         url = 'editar_penthouse.html?apartamento=' + row._id;
+//         break;
+//       case 'apartamento1':
+//         url = 'editar_apartamento1.html?apartamento=' + row._id;
+//         break;
+//       case 'Estudio':
+//         url = 'editar_estudio.html?apartamento=' + row._id;
+//         break;
+//       // Añade más casos según sea necesario
+//       default:
+//         url = 'editar_otro.html?apartamento=' + row._id; // Por defecto
+//         break;
+//     }
+//     return `
+//       <a href="${url}" class="btn btn-sm btn-outline-info ver-mobiliario">
+//         <i class="ti ti-eye"></i>
+//       </a>
+//     `;
+//   }
+// }               
               ],
-              pageLength: 10,
+              pageLength: 6,
               lengthChange: false,
               searching: true,
               language: {
